@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wipey.ProfilePage"
+             BackgroundColor="#99000000">
+  <Grid>
+    <!-- tap the dark area to close -->
+    <BoxView Color="Transparent">
+      <BoxView.GestureRecognizers><TapGestureRecognizer Tapped="OnBackdrop"/></BoxView.GestureRecognizers>
+    </BoxView>
+
+    <Border VerticalOptions="End" Padding="24,12,24,20" StrokeThickness="0" StrokeShape="RoundRectangle 26,26,0,0"
+            BackgroundColor="{AppThemeBinding Light=White, Dark=#272B3A}">
+      <VerticalStackLayout Spacing="8">
+        <Border WidthRequest="44" HeightRequest="5" HorizontalOptions="Center" StrokeThickness="0" StrokeShape="RoundRectangle 3"
+                BackgroundColor="{AppThemeBinding Light=#D5D8E0, Dark=#4A5064}" Margin="0,0,0,10"/>
+        <Label Text="Your profile" FontSize="20" FontAttributes="Bold" Margin="0,0,0,8"/>
+
+        <Label Text="Name" FontSize="14" FontAttributes="Bold"/>
+        <Border Style="{StaticResource Card}" Padding="14,0" StrokeShape="RoundRectangle 14" BackgroundColor="Transparent">
+          <Entry x:Name="NameE" Placeholder="Your name" FontSize="17" BackgroundColor="Transparent"/>
+        </Border>
+
+        <Label Text="Email" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0"/>
+        <Border Style="{StaticResource Card}" Padding="14,0" StrokeShape="RoundRectangle 14" BackgroundColor="Transparent">
+          <Entry x:Name="EmailE" Placeholder="you@example.com" Keyboard="Email" FontSize="17" BackgroundColor="Transparent"/>
+        </Border>
+
+        <Label x:Name="Err" TextColor="#E5484D" FontSize="13" IsVisible="False"/>
+
+        <Button Text="Save profile" Style="{StaticResource Primary}" Margin="0,22,0,0" Clicked="OnSave"/>
+        <Button Text="Sign out" Style="{StaticResource Plain}" FontAttributes="Bold" FontSize="16" Clicked="OnSignOut"/>
+        <Button Text="Delete account" Style="{StaticResource Plain}" TextColor="#E5484D" FontSize="14" Clicked="OnDelete"/>
+      </VerticalStackLayout>
+    </Border>
+  </Grid>
+</ContentPage>

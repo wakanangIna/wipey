@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wipey.App">
+  <Application.Resources>
+    <ResourceDictionary>
+      <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FBF9F6, Dark=#1E212D}"/>
+      </Style>
+      <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#2A2E3A, Dark=#F6F0E6}"/>
+      </Style>
+      <Style x:Key="Mute" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#7A7F8E, Dark=#9AA0B4}"/><Setter Property="FontSize" Value="14"/>
+      </Style>
+      <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#2A2E3A, Dark=#F6F0E6}"/>
+        <Setter Property="PlaceholderColor" Value="#8A8D98"/>
+      </Style>
+      <Style x:Key="Card" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#272B3A}"/>
+        <Setter Property="Stroke" Value="{AppThemeBinding Light=#E3DED5, Dark=#363B4D}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 18"/>
+        <Setter Property="Padding" Value="14"/>
+      </Style>
+      <Style x:Key="Chip" TargetType="Border">
+        <Setter Property="WidthRequest" Value="28"/><Setter Property="HeightRequest" Value="28"/>
+        <Setter Property="StrokeThickness" Value="0"/><Setter Property="StrokeShape" Value="RoundRectangle 8"/>
+        <Setter Property="Padding" Value="0"/>
+      </Style>
+      <Style x:Key="Primary" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#5468E8, Dark=#7C8FF5}"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="CornerRadius" Value="24"/><Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HeightRequest" Value="52"/>
+        <Setter Property="Shadow">
+          <Setter.Value><Shadow Brush="#7C8FF5" Offset="0,6" Radius="22" Opacity="0.35"/></Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="Plain" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/><Setter Property="TextColor" Value="#8A8D98"/>
+      </Style>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

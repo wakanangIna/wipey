@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wipey"
+             x:Class="Wipey.HomeView">
+    <RefreshView x:Name="RV" Refreshing="OnRefresh">
+      <ScrollView>
+        <VerticalStackLayout Padding="20,24,20,28" Spacing="14">
+
+          <!-- header: logo, name, online pill -->
+          <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" Margin="0,0,0,10">
+            <Border WidthRequest="34" HeightRequest="34" StrokeThickness="0" StrokeShape="RoundRectangle 10"
+                    BackgroundColor="{AppThemeBinding Light=#5468E8, Dark=#7C8FF5}">
+              <Border WidthRequest="16" HeightRequest="6" BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 3"
+                      HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+            <Label Grid.Column="1" Text="WIPEY" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Border Grid.Column="2" Padding="11,6" StrokeThickness="0" StrokeShape="RoundRectangle 16" VerticalOptions="Center"
+                    BackgroundColor="{AppThemeBinding Light=#DDF3E8, Dark=#1F3A38}">
+              <HorizontalStackLayout Spacing="6">
+                <Ellipse WidthRequest="7" HeightRequest="7" Fill="#56B88A" VerticalOptions="Center"/>
+                <Label Text="Online" FontSize="13" FontAttributes="Bold" TextColor="#56B88A" VerticalOptions="Center"/>
+              </HorizontalStackLayout>
+            </Border>
+          </Grid>
+
+          <Label x:Name="Hi" FontSize="28" FontAttributes="Bold"/>
+          <Label Text="Your board is waiting." Style="{StaticResource Mute}" Margin="0,-10,0,4"/>
+
+          <Button x:Name="EraseBtn" Text="Erase now" Style="{StaticResource Primary}" HeightRequest="84" FontSize="22" CornerRadius="30" Clicked="OnErase"/>
+          <Label x:Name="Status" Style="{StaticResource Mute}" HorizontalTextAlignment="Center" IsVisible="False"/>
+
+          <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,4,0,0">
+            <Border Style="{StaticResource Card}">
+              <VerticalStackLayout Spacing="14">
+                <HorizontalStackLayout Spacing="8">
+                  <Border Style="{StaticResource Chip}" BackgroundColor="{AppThemeBinding Light=#E4E8FC, Dark=#2E3454}">
+                    <Path Data="M3 12 A9 9 0 1 0 21 12 A9 9 0 1 0 3 12 M12 7 V12 L15 14" Stroke="#7C8FF5" StrokeThickness="2"
+                          StrokeLineCap="Round" StrokeLineJoin="Round" Aspect="Uniform" WidthRequest="14" HeightRequest="14"
+                          HorizontalOptions="Center" VerticalOptions="Center"/>
+                  </Border>
+                  <Label Text="Next erase" Style="{StaticResource Mute}" FontAttributes="Bold" FontSize="13" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Label x:Name="NextL" FontAttributes="Bold" FontSize="17"/>
+              </VerticalStackLayout>
+              <Border.GestureRecognizers><TapGestureRecognizer Tapped="ToSchedule"/></Border.GestureRecognizers>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource Card}">
+              <VerticalStackLayout Spacing="14">
+                <HorizontalStackLayout Spacing="8">
+                  <Border Style="{StaticResource Chip}" BackgroundColor="{AppThemeBinding Light=#F8E6DE, Dark=#45362F}">
+                    <Path Data="M4 8 H8 L10 5 H14 L16 8 H20 V19 H4 Z M9 13 A3 3 0 1 0 15 13 A3 3 0 1 0 9 13" Stroke="#E08A6A" StrokeThickness="2"
+                          StrokeLineCap="Round" StrokeLineJoin="Round" Aspect="Uniform" WidthRequest="14" HeightRequest="14"
+                          HorizontalOptions="Center" VerticalOptions="Center"/>
+                  </Border>
+                  <Label Text="Last capture" Style="{StaticResource Mute}" FontAttributes="Bold" FontSize="13" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Image x:Name="LastImg" HeightRequest="64" Aspect="AspectFill" IsVisible="False"/>
+                <Label x:Name="LastL" FontAttributes="Bold" FontSize="17"/>
+              </VerticalStackLayout>
+              <Border.GestureRecognizers><TapGestureRecognizer Tapped="ToGallery"/></Border.GestureRecognizers>
+            </Border>
+          </Grid>
+        </VerticalStackLayout>
+      </ScrollView>
+    </RefreshView>
+</ContentView>

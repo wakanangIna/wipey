@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wipey"
+             x:Class="Wipey.ScheduleView">
+  <Grid RowDefinitions="Auto,*,Auto">
+    <VerticalStackLayout Padding="20,28,20,8">
+      <Label Text="Schedule" FontSize="26" FontAttributes="Bold"/>
+      <Label Text="Plan when WIPEY erases the board." Style="{StaticResource Mute}"/>
+    </VerticalStackLayout>
+    <CollectionView x:Name="List" Grid.Row="1" Margin="20,0">
+      <CollectionView.ItemsLayout><LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/></CollectionView.ItemsLayout>
+      <CollectionView.EmptyView><Label Text="No erase cycles yet. Add one below." Style="{StaticResource Mute}" HorizontalTextAlignment="Center" Margin="0,50"/></CollectionView.EmptyView>
+      <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="local:Cycle">
+          <Border Style="{StaticResource Card}">
+            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+              <VerticalStackLayout><Label Text="{Binding Label}" FontAttributes="Bold" FontSize="17"/><Label Text="{Binding RepeatLabel}" Style="{StaticResource Mute}"/></VerticalStackLayout>
+              <Switch Grid.Column="1" IsToggled="{Binding On, Mode=OneWay}" ThumbColor="White"
+                      OnColor="{AppThemeBinding Light=#5468E8, Dark=#7C8FF5}" Toggled="OnToggle"/>
+              <Grid Grid.Column="2" Padding="8" VerticalOptions="Center" BackgroundColor="Transparent">
+                <Path Data="M6 6 L18 18 M18 6 L6 18" Stroke="#8A8D98" StrokeThickness="2" StrokeLineCap="Round"
+                      Aspect="Uniform" WidthRequest="14" HeightRequest="14"/>
+                <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnDelete"/></Grid.GestureRecognizers>
+              </Grid>
+            </Grid>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+    <Button Grid.Row="2" Text="Add erase cycle" Style="{StaticResource Primary}" Margin="20,8" Clicked="OnAdd"/>
+  </Grid>
+</ContentView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wipey"
+             x:Class="Wipey.LogView">
+  <Grid RowDefinitions="Auto,*">
+    <VerticalStackLayout Padding="20,28,20,8">
+      <Label Text="Cleaning log" FontSize="26" FontAttributes="Bold"/>
+      <Label Text="Every finished erase is recorded here." Style="{StaticResource Mute}"/>
+    </VerticalStackLayout>
+    <CollectionView x:Name="List" Grid.Row="1" Margin="20,0">
+      <CollectionView.ItemsLayout><LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/></CollectionView.ItemsLayout>
+      <CollectionView.EmptyView><Label Text="No cleanings yet. Tap Erase now on Home." Style="{StaticResource Mute}" HorizontalTextAlignment="Center" Margin="0,50"/></CollectionView.EmptyView>
+      <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="local:LogEntry">
+          <Border Style="{StaticResource Card}">
+            <Grid ColumnDefinitions="*,Auto"><VerticalStackLayout><Label Text="Erase finished" FontAttributes="Bold"/><Label Text="{Binding Day}" Style="{StaticResource Mute}"/></VerticalStackLayout><Label Grid.Column="1" Text="{Binding Time}" FontAttributes="Bold" VerticalOptions="Center"/></Grid>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </Grid>
+</ContentView>

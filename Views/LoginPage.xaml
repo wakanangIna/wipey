@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wipey.LoginPage">
+  <ScrollView>
+    <VerticalStackLayout Padding="24,70,24,24" Spacing="10">
+      <Label Text="WIPEY" FontSize="20" FontAttributes="Bold"/>
+      <Label x:Name="TitleLabel" Text="Welcome back" FontSize="26" FontAttributes="Bold" Margin="0,24,0,0"/>
+      <Label x:Name="Sub" Text="Sign in to control your whiteboard robot." Style="{StaticResource Mute}"/>
+      <Entry x:Name="NameE" Placeholder="Name" IsVisible="False"/>
+      <Entry x:Name="EmailE" Placeholder="you@school.edu" Keyboard="Email"/>
+      <Grid>
+        <Entry x:Name="PwE" Placeholder="Password (at least 4 characters)" IsPassword="True"/>
+        <Button x:Name="Eye" Text="Show" HorizontalOptions="End" BackgroundColor="Transparent" TextColor="#3A56D9" Clicked="OnEye"/>
+      </Grid>
+      <Button x:Name="Forgot" Text="Forgot password?" Style="{StaticResource Plain}" HorizontalOptions="Start" Clicked="OnForgot"/>
+      <Label x:Name="Err" TextColor="#C24B3A"/>
+      <Button x:Name="Go" Text="Sign in" Style="{StaticResource Primary}" Clicked="OnGo"/>
+      <Button x:Name="Swap" Text="New here? Create an account" Style="{StaticResource Plain}" Clicked="OnSwap"/>
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wipey.ProfileBar">
+  <Grid RowDefinitions="Auto,Auto" BackgroundColor="{AppThemeBinding Light=White, Dark=#262B3A}">
+    <!-- profile row + sun/moon switch -->
+    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="16,10,16,10">
+      <HorizontalStackLayout Spacing="10">
+        <Border WidthRequest="32" HeightRequest="32" BackgroundColor="#D17B5A" StrokeThickness="0" StrokeShape="RoundRectangle 16">
+          <Label x:Name="Ini" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Border>
+        <Label x:Name="NameL" FontAttributes="Bold" FontSize="16" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+        <HorizontalStackLayout.GestureRecognizers><TapGestureRecognizer Tapped="OnProfile"/></HorizontalStackLayout.GestureRecognizers>
+      </HorizontalStackLayout>
+      <Border x:Name="Track" Grid.Column="1" WidthRequest="64" HeightRequest="34" Padding="0" StrokeThickness="2.5" StrokeShape="RoundRectangle 17"
+              SemanticProperties.Description="Switch between light and dark mode">
+        <Border x:Name="Knob" WidthRequest="26" HeightRequest="26" Margin="2,0" HorizontalOptions="Start" VerticalOptions="Center" StrokeThickness="2.5" StrokeShape="RoundRectangle 13">
+          <Grid x:Name="Glyph" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Border>
+        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnTheme"/></Border.GestureRecognizers>
+      </Border>
+    </Grid>
+    <BoxView Grid.Row="0" HeightRequest="1" VerticalOptions="End" Color="{AppThemeBinding Light=#E3DED5, Dark=#363B4D}"/>
+
+    <!-- tab row -->
+    <Grid x:Name="Nav" Grid.Row="1" ColumnDefinitions="*,*,*,*,*" Padding="0,0,0,4"/>
+
+    <!-- raised camera button -->
+    <Border x:Name="Fab" Grid.Row="1" WidthRequest="58" HeightRequest="58" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-22,0,0"
+            StrokeShape="RoundRectangle 29" StrokeThickness="4" Padding="0"
+            BackgroundColor="{AppThemeBinding Light=#5468E8, Dark=#7C8FF5}"
+            Stroke="{AppThemeBinding Light=#FBF9F6, Dark=#1E212D}"
+            SemanticProperties.Description="Take a photo of the whiteboard">
+      <Border.Shadow><Shadow Brush="#7C8FF5" Offset="0,4" Radius="16" Opacity="0.45"/></Border.Shadow>
+      <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnCamera"/></Border.GestureRecognizers>
+    </Border>
+  </Grid>
+</ContentView>

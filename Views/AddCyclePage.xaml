@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wipey.AddCyclePage"
+             BackgroundColor="#99000000">
+  <Grid>
+    <BoxView Color="Transparent">
+      <BoxView.GestureRecognizers><TapGestureRecognizer Tapped="OnCancel"/></BoxView.GestureRecognizers>
+    </BoxView>
+
+    <Border VerticalOptions="End" Padding="24,12,24,20" StrokeThickness="0" StrokeShape="RoundRectangle 26,26,0,0"
+            BackgroundColor="{AppThemeBinding Light=White, Dark=#272B3A}">
+      <VerticalStackLayout Spacing="8">
+        <Border WidthRequest="44" HeightRequest="5" HorizontalOptions="Center" StrokeThickness="0" StrokeShape="RoundRectangle 3"
+                BackgroundColor="{AppThemeBinding Light=#D5D8E0, Dark=#4A5064}" Margin="0,0,0,10"/>
+        <Label Text="Add erase cycle" FontSize="20" FontAttributes="Bold" Margin="0,0,0,8"/>
+
+        <Label Text="Time" FontSize="14" FontAttributes="Bold"/>
+        <Border Style="{StaticResource Card}" Padding="14,0" StrokeShape="RoundRectangle 14" BackgroundColor="Transparent">
+          <Grid>
+            <TimePicker x:Name="Picker" Format="hh:mm tt" FontSize="17" BackgroundColor="Transparent"
+                        TextColor="{AppThemeBinding Light=#2A2E3A, Dark=#F6F0E6}"/>
+            <Grid x:Name="ClockHost" HorizontalOptions="End" VerticalOptions="Center" InputTransparent="True"/>
+          </Grid>
+        </Border>
+
+        <Label Text="Repeat on" FontSize="14" FontAttributes="Bold" Margin="0,12,0,0"/>
+        <Grid x:Name="DaysGrid" ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="6" Margin="0,4,0,0"/>
+        <HorizontalStackLayout x:Name="Presets" Spacing="8" Margin="0,8,0,0"/>
+        <Label x:Name="Summary" Style="{StaticResource Mute}" FontSize="13" Margin="0,4,0,0"/>
+        <Label x:Name="Err" TextColor="#E5484D" FontSize="13" IsVisible="False"/>
+
+        <Button Text="Save cycle" Style="{StaticResource Primary}" Margin="0,16,0,0" Clicked="OnSave"/>
+        <Button Text="Cancel" Style="{StaticResource Plain}" FontAttributes="Bold" FontSize="16" Clicked="OnCancel"/>
+      </VerticalStackLayout>
+    </Border>
+  </Grid>
+</ContentPage>

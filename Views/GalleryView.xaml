@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wipey"
+             x:Class="Wipey.GalleryView">
+  <Grid RowDefinitions="Auto,*">
+    <VerticalStackLayout Padding="20,28,20,8">
+      <Label Text="Gallery" FontSize="26" FontAttributes="Bold"/>
+      <Label Text="Photos of your whiteboard. Tap a photo to delete it." Style="{StaticResource Mute}"/>
+    </VerticalStackLayout>
+    <RefreshView x:Name="RV" Grid.Row="1" Refreshing="OnRefresh">
+      <CollectionView x:Name="List" Margin="14,0" SelectionMode="Single" SelectionChanged="OnPick">
+        <CollectionView.ItemsLayout><GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="10" HorizontalItemSpacing="10"/></CollectionView.ItemsLayout>
+        <CollectionView.EmptyView>
+          <Label Text="No photos yet. Tap Camera to capture your whiteboard." Style="{StaticResource Mute}" HorizontalTextAlignment="Center" Margin="30,60"/>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+          <DataTemplate x:DataType="local:Capture">
+            <Border Style="{StaticResource Card}" Padding="0" StrokeShape="RoundRectangle 16">
+              <Grid RowDefinitions="110,Auto">
+                <Image Source="{Binding Path}" Aspect="AspectFill"/>
+                <VerticalStackLayout Grid.Row="1" Margin="10,8" Spacing="1">
+                  <Label Text="{Binding DateText}" FontSize="13" FontAttributes="Bold"/>
+                  <Label Text="{Binding TimeText}" FontSize="12" Style="{StaticResource Mute}"/>
+                </VerticalStackLayout>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </RefreshView>
+  </Grid>
+</ContentView>
